@@ -1,8 +1,7 @@
 import { BUY_CAKE } from "./cakeTypes";
 
-export default function buyCake() {
+export const buyCake = () => {
   return {
     type: BUY_CAKE,
   };
-}
-  
+};
