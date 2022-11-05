@@ -4,7 +4,7 @@ const cakeActions = require("./features/cake/cakeSlice").cakeActions;
 
 console.log("Initial State", store.getState());
 const unsubscribe = store.subscribe(() => {
-  console.log("Updated", store.getState());
+  //   console.log("Updated", store.getState());
 });
 store.dispatch(cakeActions.ordered());
 store.dispatch(cakeActions.ordered());
