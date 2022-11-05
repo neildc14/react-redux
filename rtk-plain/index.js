@@ -1,21 +1,19 @@
-const createSlice = require("@reduxjs/toolkit").createSlice;
+const store = require("./app/store");
+const { icecreamActions } = require("./features/icecream/icecreamSlice");
+const cakeActions = require("./features/cake/cakeSlice").cakeActions;
 
-const initialState = {
-  numOfCakes: 10,
-};
-
-const cakeSlice = createSlice({
-  name: "cake",
-  initialState,
-  reducers: {
-    ordered: (state) => {
-      state.numOfCakes--;
-    },
-    restocked: (state, action) => {
-      state.numOfCakes += action.payload;
-    },
-  },
+console.log("Initial State", store.getState());
+const unsubscribe = store.subscribe(() => {
+  console.log("Updated", store.getState());
 });
+store.dispatch(cakeActions.ordered());
+store.dispatch(cakeActions.ordered());
+store.dispatch(cakeActions.ordered());
+store.dispatch(cakeActions.restocked(3));
 
-module.exports = cakeSlice.reducer;
-module.exports.cakeActions = cakeSlice.actions;
+store.dispatch(icecreamActions.ordered());
+store.dispatch(icecreamActions.ordered());
+store.dispatch(icecreamActions.ordered());
+store.dispatch(icecreamActions.restocked(3));
+
+unsubscribe();
