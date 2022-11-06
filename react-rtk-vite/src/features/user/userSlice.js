@@ -7,7 +7,7 @@ const initialState = {
   errors: "",
 };
 
-export const fetchUsers = createAsyncThunk("user/fetchUsers", () => {
+export const fetchUsers = createAsyncThunk("user/fetchUsers", async () => {
   return axios
     .get("https://jsonplaceholder.typicode.com/users")
     .then((response) => response.data);
